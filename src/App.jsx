@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Arrow90degLeft,
   ArrowUpRight,
+  BarChartLine,
   CardImage,
   Check,
   ChevronBarDown,
@@ -11,6 +12,10 @@ import {
   GeoAltFill,
   Heart,
   HeartFill,
+  List,
+  MenuButton,
+  MenuButtonFill,
+  MenuButtonWideFill,
   Person,
   PersonCircle,
   PersonFill,
@@ -50,38 +55,43 @@ import villas from "../src/image/featureimg3.avif";
 import plot from "../src/image/featureimg4.avif";
 import colving from "../src/image/featureimg5.jpg";
 import office from "../src/image/featureimg6.avif";
-import appartmentbg from '../src/image/contact-bg.jpeg'
+import appartmentbg from "../src/image/contact-bg.jpeg";
 
 function App() {
   const [heart, setheart] = useState(false);
-  const[trie , settrie]=useState(false)
-  const[frees,setfrees]=useState(false)
-  const[basics,setbasics]=useState(false);
-  const[standards,setstandards]=useState(false)
+  const [trie, settrie] = useState(false);
+  const [frees, setfrees] = useState(false);
+  const [basics, setbasics] = useState(false);
+  const [standards, setstandards] = useState(false);
+  const[menu,setmenu]=useState(false)
 
   const heartselect = () => {
     setheart(!heart);
   };
 
-  const premium=()=>{
-    settrie(!trie)
-  }
-  const free=()=>{
-    setfrees(!frees)
+  const menubar=()=>{
+    setmenu(!menu)
   }
 
-  const standard=()=>{
-    setstandards(!standards)
-  }
+  const premium = () => {
+    settrie(!trie);
+  };
+  const free = () => {
+    setfrees(!frees);
+  };
 
-  const basic=()=>{
-    setbasics(!basics)
-  }
+  const standard = () => {
+    setstandards(!standards);
+  };
+
+  const basic = () => {
+    setbasics(!basics);
+  };
   return (
     <>
       <header className="header-section">
         <div className="container">
-          <div className="row">
+          <div className="row firstview">
             <div className="col-md-4 mt-3">
               <div className="location flex-concept text-center">
                 <div className="location-logo">
@@ -98,18 +108,34 @@ function App() {
                 </div>
                 <div className="free-post bg-light">
                   <p>
-                    Post Property <span className="free-name">Free</span>
+                    Post Property <span className="free-view">Free</span>
                   </p>
                 </div>
               </div>
             </div>
             <div className="col-md-4 ">
-              <div className="person-icon text-center">
-                <div className="person-logo">
-                  <PersonFill className="personimg" />
+              <div className="tb-header-sec">
+                <div className="location-list2">
+                  <select>
+                    <option>Chennai</option>
+                    <option>Delhi</option>
+                    <option>Bengalore</option>
+                    <option>Hyderabad</option>
+                    <option>Mumbai</option>
+                  </select>
                 </div>
-                <div className="person-content">
-                  <p>No To Brokers</p>
+                <div className="person-icon text-center">
+                  <div className="person-logo">
+                    <PersonFill className="personimg" />
+                  </div>
+                  <div className="person-content">
+                    <p>No To Brokers</p>
+                  </div>
+                </div>
+                <div className="free-post bg-light2">
+                  <p>
+                    Post Property <span className="free-view">Free</span>
+                  </p>
                 </div>
               </div>
             </div>
@@ -136,7 +162,7 @@ function App() {
         </div>
       </header>
 
-      <nav className="navlist">
+      <nav className="navlist tm-view">
         <div className="container">
           <div className="page-list">
             <ul className="page-types">
@@ -184,6 +210,50 @@ function App() {
 
       <section className="house-image">
         <div className="image-set">
+          <div className="menu-bar">
+            <List onClick={menubar}/>
+          </div>
+          <div className={menu === false ?" tm-nav":"tm-nav2"}>
+            <ul>
+            <li className="active">Home</li>
+              <li>
+                Buy{" "}
+                <span>
+                  <ChevronDown />
+                </span>
+              </li>
+              <li>
+                Sell{" "}
+                <span>
+                  <ChevronDown />
+                </span>
+              </li>
+              <li>
+                Rent{" "}
+                <span>
+                  <ChevronDown />
+                </span>
+              </li>
+              <li>
+                Service{" "}
+                <span>
+                  <ChevronDown />
+                </span>
+              </li>
+              <li>
+                Advice{" "}
+                <span>
+                  <ChevronDown />
+                </span>
+              </li>
+              <li>
+                Help{" "}
+                <span>
+                  <ChevronDown />
+                </span>
+              </li>
+            </ul>
+          </div>
           <div className="container-fluid">
             <div className="row">
               <div className="col-md-6">
@@ -191,7 +261,7 @@ function App() {
                   <div className="house-overlay"></div>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 tp-view">
                 <div className="house">
                   <div className="house-overlay"></div>
                 </div>
@@ -723,170 +793,168 @@ function App() {
 
         <div className="latest-prop-list ">
           <div className="container">
-            <div className="latest-house">
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img src={hall} className="img-fluid"></img>
-                  <div className="img-details">
-                    <h4>verified</h4>
-                  </div>
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 5 Lakhs | 1000 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Mylapor,chennai</p>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="latest-house">
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img src={hall} className="img-fluid"></img>
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
                     </div>
-                    <div className="house-date">
-                      <p>2days before</p>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 15,000 | 2800 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Avadi, chennai</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img
+                        src={appartment}
+                        className="img-fluid img-one"
+                        style={{ height: "169px", objectFit: "cover" }}
+                      ></img>
+
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
+                    </div>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 11,000| 525 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Avadi, chennai</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="col-md-6">
+                <div className="latest-house">
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img src={singlehome} className="img-fluid"></img>
 
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img
-                    src={appartment}
-                    className="img-fluid"
-                    style={{ height: "169px", objectFit: "cover" }}
-                  ></img>
-                  <div className="img-details">
-                    <h4>verified</h4>
-                  </div>
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 5 Lakhs | 1000 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Mylapor,chennai</p>
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
                     </div>
-                    <div className="house-date">
-                      <p>2days before</p>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 12,000 | 600 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Bandra Mumbai</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img src={singlehome} className="img-fluid"></img>
-                  <div className="img-details">
-                    <h4>verified</h4>
-                  </div>
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 5 Lakhs | 1000 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Mylapor,chennai</p>
-                    </div>
-                    <div className="house-date">
-                      <p>2days before</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img src={hall2} className="img-fluid"></img>
 
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img src={hall2} className="img-fluid"></img>
-                  <div className="img-details">
-                    <h4>verified</h4>
-                  </div>
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 5 Lakhs | 1000 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Mylapor,chennai</p>
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
                     </div>
-                    <div className="house-date">
-                      <p>2days before</p>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 15,000 | 400 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Narela, Delhi</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -921,107 +989,119 @@ function App() {
 
         <div className="explore-images">
           <div className="container">
-            <div className="explore ">
-              <div className="explore-img-list">
-                <div className="explore-pic">
-                  <img src={houseshift} className="img-fluid" />
-                </div>
+            <div className="row">
+              <div className="col-md-12">
+                <div className="explore ">
+                  <div className="explore-img-list">
+                    <div className="explore-pic">
+                      <img src={houseshift} className="img-fluid" />
+                    </div>
 
-                <div className="explore-content">
-                  <h3>PACKERS & MOVERS</h3>
-                  <p>
-                    Relocate Seamlessly With Our Trusted Packers & Movers
-                    services
-                  </p>
-                  <h6>
-                    <PersonCircle className="follower text-dark" /> 360 people
-                  </h6>
+                    <div className="explore-content">
+                      <h3>PACKERS & MOVERS</h3>
+                      <p>
+                        Relocate Seamlessly With Our Trusted Packers & Movers
+                        services
+                      </p>
+                      <h6>
+                        <PersonCircle className="follower text-dark" /> 360
+                        people
+                      </h6>
+                    </div>
+                  </div>
+
+                  <div className="explore-img-list">
+                    <div className="explore-pic">
+                      <img src={homeloan} className="img-fluid" />
+                    </div>
+
+                    <div className="explore-content">
+                      <h3>HOME LOAN</h3>
+                      <p>
+                        Relocate Seamlessly With Our Trusted Packers & Movers
+                        services
+                      </p>
+                      <h6>
+                        <PersonCircle className="follower text-dark" /> 360
+                        people
+                      </h6>
+                    </div>
+                  </div>
+
+                  <div className="explore-img-list">
+                    <div className="explore-pic">
+                      <img src={aggrement} className="img-fluid" />
+                    </div>
+
+                    <div className="explore-content">
+                      <h3>SALE AGREEMENT</h3>
+                      <p>
+                        Relocate Seamlessly With Our Trusted Packers & Movers
+                        services
+                      </p>
+                      <h6>
+                        <PersonCircle className="follower text-dark" /> 360
+                        people
+                      </h6>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div className="col-md-12">
+                <div className="explore my-3">
+                  <div className="explore-img-list">
+                    <div className="explore-pic">
+                      <img src={paint} className="img-fluid" />
+                    </div>
 
-              <div className="explore-img-list">
-                <div className="explore-pic">
-                  <img src={homeloan} className="img-fluid" />
-                </div>
+                    <div className="explore-content">
+                      <h3>PAINTING </h3>
+                      <p>
+                        Relocate Seamlessly With Our Trusted Packers & Movers
+                        services
+                      </p>
+                      <h6>
+                        <PersonCircle className="follower text-dark" /> 360
+                        people
+                      </h6>
+                    </div>
+                  </div>
 
-                <div className="explore-content">
-                  <h3>HOME LOAN</h3>
-                  <p>
-                    Relocate Seamlessly With Our Trusted Packers & Movers
-                    services
-                  </p>
-                  <h6>
-                    <PersonCircle className="follower text-dark" /> 360 people
-                  </h6>
-                </div>
-              </div>
+                  <div className="explore-img-list">
+                    <div className="explore-pic">
+                      <img src={rentreceipt} className="img-fluid" />
+                    </div>
 
-              <div className="explore-img-list">
-                <div className="explore-pic">
-                  <img src={aggrement} className="img-fluid" />
-                </div>
+                    <div className="explore-content">
+                      <h3>RENT RECEIPTS</h3>
+                      <p>
+                        Relocate Seamlessly With Our Trusted Packers & Movers
+                        services
+                      </p>
+                      <h6>
+                        <PersonCircle className="follower text-dark" /> 360
+                        people
+                      </h6>
+                    </div>
+                  </div>
 
-                <div className="explore-content">
-                  <h3>SALE AGREEMENT</h3>
-                  <p>
-                    Relocate Seamlessly With Our Trusted Packers & Movers
-                    services
-                  </p>
-                  <h6>
-                    <PersonCircle className="follower text-dark" /> 360 people
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="explore my-3">
-              <div className="explore-img-list">
-                <div className="explore-pic">
-                  <img src={paint} className="img-fluid" />
-                </div>
+                  <div className="explore-img-list">
+                    <div className="explore-pic">
+                      <img src={verified} className="img-fluid" />
+                    </div>
 
-                <div className="explore-content">
-                  <h3>PAINTING </h3>
-                  <p>
-                    Relocate Seamlessly With Our Trusted Packers & Movers
-                    services
-                  </p>
-                  <h6>
-                    <PersonCircle className="follower text-dark" /> 360 people
-                  </h6>
-                </div>
-              </div>
-
-              <div className="explore-img-list">
-                <div className="explore-pic">
-                  <img src={rentreceipt} className="img-fluid" />
-                </div>
-
-                <div className="explore-content">
-                  <h3>RENT RECEIPTS</h3>
-                  <p>
-                    Relocate Seamlessly With Our Trusted Packers & Movers
-                    services
-                  </p>
-                  <h6>
-                    <PersonCircle className="follower text-dark" /> 360 people
-                  </h6>
-                </div>
-              </div>
-
-              <div className="explore-img-list">
-                <div className="explore-pic">
-                  <img src={verified} className="img-fluid" />
-                </div>
-
-                <div className="explore-content">
-                  <h3> VERIFIED TALENTS</h3>
-                  <p>
-                    Relocate Seamlessly With Our Trusted Packers & Movers
-                    services
-                  </p>
-                  <h6>
-                    <PersonCircle className="follower text-dark" /> 360 people
-                  </h6>
+                    <div className="explore-content">
+                      <h3> VERIFIED TALENTS</h3>
+                      <p>
+                        Relocate Seamlessly With Our Trusted Packers & Movers
+                        services
+                      </p>
+                      <h6>
+                        <PersonCircle className="follower text-dark" /> 360
+                        people
+                      </h6>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1048,161 +1128,168 @@ function App() {
 
         <div className="latest-prop-list my-5 ">
           <div className="container">
-            <div className="latest-house">
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img src={hall} className="img-fluid"></img>
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 15,000 | 2800 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Avadi, chennai</p>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="latest-house">
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img src={hall} className="img-fluid"></img>
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
                     </div>
-                    <div className="house-date">
-                      <p>Contact Owner</p>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 15,000 | 2800 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Avadi, chennai</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img
+                        src={appartment}
+                        className="img-fluid img-one"
+                        style={{ height: "169px", objectFit: "cover" }}
+                      ></img>
+
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
+                    </div>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 11,000| 525 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Avadi, chennai</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="col-md-6">
+                <div className="latest-house">
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img src={singlehome} className="img-fluid"></img>
 
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img
-                    src={appartment}
-                    className="img-fluid"
-                    style={{ height: "169px", objectFit: "cover" }}
-                  ></img>
-
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 11,000| 525 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Avadi, chennai</p>
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
                     </div>
-                    <div className="house-date">
-                      <p>Contact Owner</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img src={singlehome} className="img-fluid"></img>
-
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 12,000 | 600 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Bandra Mumbai</p>
-                    </div>
-                    <div className="house-date">
-                      <p>Contact Owner</p>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 12,000 | 600 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Bandra Mumbai</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <div className="house-pic">
-                <div className="house-logo">
-                  <img src={hall2} className="img-fluid"></img>
+                  <div className="house-pic">
+                    <div className="house-logo">
+                      <img src={hall2} className="img-fluid"></img>
 
-                  <div className="heart-pic" onClick={heartselect}>
-                    <HeartFill
-                      className={heart === true ? "hear-color" : "hear"}
-                    />
-                  </div>
-                  <div className="likes">
-                    <CardImage /> 6
-                  </div>
-                </div>
-                <div className="house-info">
-                  <div className="house-detail">
-                    <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
-                  </div>
-                  <div className="house-price">
-                    <h3>
-                      <CurrencyRupee /> 15,000 | 400 sq.ft
-                    </h3>
-                  </div>
-                  <div className="house-information">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet repellendus, suscipit et similique, .
-                    </p>
-                  </div>
-                  <div className="house-location">
-                    <div className="house-area">
-                      <p>Narela, Delhi</p>
+                      <div className="heart-pic" onClick={heartselect}>
+                        <HeartFill
+                          className={heart === true ? "hear-color" : "hear"}
+                        />
+                      </div>
+                      <div className="likes">
+                        <CardImage /> 6
+                      </div>
                     </div>
-                    <div className="house-date">
-                      <p>Contact Owner</p>
+                    <div className="house-info">
+                      <div className="house-detail">
+                        <p>1BHK FLOAT ,2BEADROOM & BALCONY</p>
+                      </div>
+                      <div className="house-price">
+                        <h3>
+                          <CurrencyRupee /> 15,000 | 400 sq.ft
+                        </h3>
+                      </div>
+                      <div className="house-information">
+                        <p>
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. Eveniet repellendus, suscipit et similique, .
+                        </p>
+                      </div>
+                      <div className="house-location">
+                        <div className="house-area">
+                          <p>Narela, Delhi</p>
+                        </div>
+                        <div className="house-date">
+                          <p>Contact Owner</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1237,104 +1324,112 @@ function App() {
 
         <div className="feature-images">
           <div className="container">
-            <div className="image-visit">
-              <div className="free-house">
-                <div className="free-pic">
-                  <img
-                    src={independent}
-                    className="img-fluid"
-                    style={{ height: "238px" }}
-                  />
-                </div>
-                <div className="free-name">
-                  <h4>independent House</h4>
-                  <h3>
-                    <Arrow90degLeft />
-                  </h3>
-                </div>
-                <div className="feature-count">
-                  <p>10+ Properties</p>
-                </div>
-              </div>
-
-              <div className="free-house">
-                <div className="free-pic">
-                  <img src={flats} className="img-fluid" />
-                </div>
-                <div className="free-name">
-                  <h4>Flats</h4>
-                  <h3>
-                    <Arrow90degLeft />
-                  </h3>
-                </div>
-                <div className="feature-count">
-                  <p>20+ Properties</p>
-                </div>
-              </div>
-
-              <div className="free-house mb-4">
-                <div className="free-pic">
-                  <img src={villas} className="img-fluid" />
-                </div>
-                <div className="free-name">
-                  <h4>Villas</h4>
-                  <h3>
-                    <Arrow90degLeft />
-                  </h3>
-                </div>
-                <div className="feature-count">
-                  <p>16+ Properties</p>
+            <div className="row">
+              <div className="col-md-4">
+                <div className="image-visit">
+                  <div className="free-house">
+                    <div className="free-pic">
+                      <img
+                        src={independent}
+                        className="img-fluid feature-img"
+                        style={{ height: "238px" }}
+                      />
+                    </div>
+                    <div className="free-name">
+                      <h4>independent House</h4>
+                      <h3>
+                        <Arrow90degLeft />
+                      </h3>
+                    </div>
+                    <div className="feature-count">
+                      <p>10+ Properties</p>
+                    </div>
+                  </div>
+                  <div className="free-house">
+                    <div className="free-pic">
+                      <img
+                        src={plot}
+                        className="img-fluid feature-img2"
+                        style={{ height: "238px" }}
+                      />
+                    </div>
+                    <div className="free-name">
+                      <h4>Plot</h4>
+                      <h3>
+                        <Arrow90degLeft />
+                      </h3>
+                    </div>
+                    <div className="feature-count">
+                      <p>19+ Properties</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="image-visit">
-              <div className="free-house">
-                <div className="free-pic">
-                  <img
-                    src={plot}
-                    className="img-fluid"
-                    style={{ height: "238px" }}
-                  />
-                </div>
-                <div className="free-name">
-                  <h4>Plot</h4>
-                  <h3>
-                    <Arrow90degLeft />
-                  </h3>
-                </div>
-                <div className="feature-count">
-                  <p>19+ Properties</p>
-                </div>
-              </div>
-
-              <div className="free-house">
-                <div className="free-pic">
-                  <img src={colving} className="img-fluid" />
-                </div>
-                <div className="free-name">
-                  <h4>Colving Space</h4>
-                  <h3>
-                    <Arrow90degLeft />
-                  </h3>
-                </div>
-                <div className="feature-count">
-                  <p>59+ Properties</p>
+              <div className="col-md-4">
+                <div className="image-visit">
+                  <div className="free-house">
+                    <div className="free-pic tb-flat">
+                      <img src={flats} className="img-fluid " />
+                    </div>
+                    <div className="free-name">
+                      <h4>Flats</h4>
+                      <h3>
+                        <Arrow90degLeft />
+                      </h3>
+                    </div>
+                    <div className="feature-count">
+                      <p>20+ Properties</p>
+                    </div>
+                  </div>
+                  <div className="free-house">
+                    <div className="free-pic tb-colving">
+                      <img src={colving} className="img-fluid feature-img" />
+                    </div>
+                    <div className="free-name">
+                      <h4>Colving Space</h4>
+                      <h3>
+                        <Arrow90degLeft />
+                      </h3>
+                    </div>
+                    <div className="feature-count">
+                      <p>59+ Properties</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div className="free-house">
-                <div className="free-pic">
-                  <img src={office} className="img-fluid" />
-                </div>
-                <div className="free-name">
-                  <h4>Office Area</h4>
-                  <h3>
-                    <Arrow90degLeft />
-                  </h3>
-                </div>
-                <div className="feature-count">
-                  <p>19+ Properties</p>
+              <div className="col-md-4">
+                <div className="image-visit">
+                  <div className="free-house  tb-view">
+                    <div className="free-pic">
+                      <img src={villas} className="img-fluid feature-img" />
+                    </div>
+                    <div className="free-name">
+                      <h4>Villas</h4>
+                      <h3>
+                        <Arrow90degLeft />
+                      </h3>
+                    </div>
+                    <div className="feature-count">
+                      <p>16+ Properties</p>
+                    </div>
+                  </div>
+                  <div className="free-house">
+                    <div className="free-pic">
+                      <img
+                        src={office}
+                        className="img-fluid feature-img2 feature-img"
+                      />
+                    </div>
+                    <div className="free-name">
+                      <h4>Office Area</h4>
+                      <h3>
+                        <Arrow90degLeft />
+                      </h3>
+                    </div>
+                    <div className="feature-count">
+                      <p>19+ Properties</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1446,7 +1541,10 @@ function App() {
               <h5>Why Client Say About Us</h5>
             </div>
             <div className="client-content">
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum, autem. Voluptatum maiores </p>
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Nostrum, autem. Voluptatum maiores{" "}
+              </p>
             </div>
           </div>
         </div>
@@ -1456,20 +1554,25 @@ function App() {
             <div className="client-speech">
               <div className="client-list">
                 <div className="client-name">
-                  <PersonCircle/> Jothika
+                  <PersonCircle /> Jothika
                 </div>
                 <div className="clinet-address">
                   <p>Australia | May, 2017</p>
                 </div>
                 <div className="client-stars ">
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarHalf/>
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarHalf />
                 </div>
                 <div className="client-text">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui inventore recusandae repudiandae magnam saepe totam sequi praesentium velit at excepturi, et veniam dolorum laudantium ullam dolor deserunt nam optio?</p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis qui inventore recusandae repudiandae magnam saepe
+                    totam sequi praesentium velit at excepturi, et veniam
+                    dolorum laudantium ullam dolor deserunt nam optio?
+                  </p>
                 </div>
                 <div className="client-read">
                   <p>Read More...</p>
@@ -1477,20 +1580,25 @@ function App() {
               </div>
               <div className="client-list">
                 <div className="client-name">
-                  <PersonCircle/> Ashok
+                  <PersonCircle /> Ashok
                 </div>
                 <div className="clinet-address">
                   <p>Delhi | March, 2006</p>
                 </div>
                 <div className="client-stars ">
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarHalf/>
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarHalf />
                 </div>
                 <div className="client-text">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui inventore recusandae repudiandae magnam saepe totam sequi praesentium velit at excepturi, et veniam dolorum laudantium ullam dolor deserunt nam optio?</p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis qui inventore recusandae repudiandae magnam saepe
+                    totam sequi praesentium velit at excepturi, et veniam
+                    dolorum laudantium ullam dolor deserunt nam optio?
+                  </p>
                 </div>
                 <div className="client-read">
                   <p>Read More...</p>
@@ -1498,20 +1606,25 @@ function App() {
               </div>
               <div className="client-list">
                 <div className="client-name">
-                  <PersonCircle/> Ganapathy
+                  <PersonCircle /> Ganapathy
                 </div>
                 <div className="clinet-address">
                   <p>Chennai | April, 2020</p>
                 </div>
                 <div className="client-stars ">
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarHalf/>
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarHalf />
                 </div>
                 <div className="client-text">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui inventore recusandae repudiandae magnam saepe totam sequi praesentium velit at excepturi, et veniam dolorum laudantium ullam dolor deserunt nam optio?</p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis qui inventore recusandae repudiandae magnam saepe
+                    totam sequi praesentium velit at excepturi, et veniam
+                    dolorum laudantium ullam dolor deserunt nam optio?
+                  </p>
                 </div>
                 <div className="client-read">
                   <p>Read More...</p>
@@ -1519,20 +1632,25 @@ function App() {
               </div>
               <div className="client-list">
                 <div className="client-name">
-                  <PersonCircle/> John 
+                  <PersonCircle /> John
                 </div>
                 <div className="clinet-address">
                   <p>Berlin | June, 2012</p>
                 </div>
                 <div className="client-stars ">
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarFill/>
-                  <StarHalf/>
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarFill />
+                  <StarHalf />
                 </div>
                 <div className="client-text">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis qui inventore recusandae repudiandae magnam saepe totam sequi praesentium velit at excepturi, et veniam dolorum laudantium ullam dolor deserunt nam optio?</p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis qui inventore recusandae repudiandae magnam saepe
+                    totam sequi praesentium velit at excepturi, et veniam
+                    dolorum laudantium ullam dolor deserunt nam optio?
+                  </p>
                 </div>
                 <div className="client-read ">
                   <p>Read More...</p>
@@ -1550,7 +1668,11 @@ function App() {
               <h4>The Right Plan Select Your Dream Home</h4>
             </div>
             <div className="plan-info">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error necessitatibus fuga reprehenderit labore maxime voluptatem. ? Rem.</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
+                necessitatibus fuga reprehenderit labore maxime voluptatem. ?
+                Rem.
+              </p>
             </div>
           </div>
         </div>
@@ -1564,17 +1686,52 @@ function App() {
                 </div>
                 <div className="plan-system">
                   <ul>
-                    <li><span><Check/></span>  Upload video up to 720p resolution</li>
-                    <li className="non"><span><Check/></span>  Achievment & Post Scheduling</li>
-                    <li className="non" ><span><Check/></span>  Set Your Rates</li>
-                    <li className="non" ><span><Check/></span>  Excluscive Deals</li>
-                    <li className="non"><span><XCircle/></span>  Advanced Statistics</li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Upload video up to 720p resolution
+                    </li>
+                    <li className="non">
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Achievment & Post Scheduling
+                    </li>
+                    <li className="non">
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Set Your Rates
+                    </li>
+                    <li className="non">
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Excluscive Deals
+                    </li>
+                    <li className="non">
+                      <span>
+                        <XCircle />
+                      </span>{" "}
+                      Advanced Statistics
+                    </li>
                   </ul>
                 </div>
-                <div className={frees === false?"choose-btn":"choose-btn2"}>
+                <div
+                  className={
+                    frees === false ? "choose-btn tb-btn" : "choose-btn2 tb-btn"
+                  }
+                >
                   <button>Choose</button>
                 </div>
-                <div className={frees === true ?"choose-btn-try":"choose-btn-try2"}>
+                <div
+                  className={
+                    frees === true
+                      ? "choose-btn-try tb-btn"
+                      : "choose-btn-try2 tb-btn"
+                  }
+                >
                   <button>Try Now</button>
                 </div>
               </div>
@@ -1585,20 +1742,52 @@ function App() {
                 </div>
                 <div className="plan-system">
                   <ul>
-                    <li><span><Check/></span>  Upload video up to 720p resolution</li>
-                    <li><span><Check/></span>  Achievment & Post Scheduling</li>
-                    <li className="non" ><span><Check/></span>  Set Your Rates</li>
-                    <li className="non" ><span><Check/></span>  Excluscive Deals</li>
-                    <li className="non" ><span><XCircle/></span>  Advanced Statistics</li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Upload video up to 720p resolution
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Achievment & Post Scheduling
+                    </li>
+                    <li className="non">
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Set Your Rates
+                    </li>
+                    <li className="non">
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Excluscive Deals
+                    </li>
+                    <li className="non">
+                      <span>
+                        <XCircle />
+                      </span>{" "}
+                      Advanced Statistics
+                    </li>
                   </ul>
                 </div>
                 <div className="plan-rate">
-                  <CurrencyRupee/>123/<span>month</span>
+                  <CurrencyRupee />
+                  123/<span>month</span>
                 </div>
-                <div className={basics === false?"choose-btn":"choose-btn2"}>
+                <div
+                  className={basics === false ? "choose-btn" : "choose-btn2"}
+                >
                   <button>Choose</button>
                 </div>
-                <div className={basics === true ?"choose-btn-try":"choose-btn-try2"}>
+                <div
+                  className={
+                    basics === true ? "choose-btn-try" : "choose-btn-try2"
+                  }
+                >
                   <button>Try Now</button>
                 </div>
               </div>
@@ -1609,20 +1798,52 @@ function App() {
                 </div>
                 <div className="plan-system">
                   <ul>
-                    <li><span><Check/></span>  Upload video up to 720p resolution</li>
-                    <li><span><Check/></span>  Achievment & Post Scheduling</li>
-                    <li><span><Check/></span>  Set Your Rates</li>
-                    <li><span><Check/></span>  Excluscive Deals</li>
-                    <li className="non" ><span><XCircle/></span>  Advanced Statistics</li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Upload video up to 720p resolution
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Achievment & Post Scheduling
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Set Your Rates
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Excluscive Deals
+                    </li>
+                    <li className="non">
+                      <span>
+                        <XCircle />
+                      </span>{" "}
+                      Advanced Statistics
+                    </li>
                   </ul>
                 </div>
                 <div className="plan-rate">
-                  <CurrencyRupee/>123/<span>month</span>
+                  <CurrencyRupee />
+                  123/<span>month</span>
                 </div>
-                <div className={standards === false?"choose-btn":"choose-btn2"}>
+                <div
+                  className={standards === false ? "choose-btn" : "choose-btn2"}
+                >
                   <button>Choose</button>
                 </div>
-                <div className={standards=== true ?"choose-btn-try":"choose-btn-try2"}>
+                <div
+                  className={
+                    standards === true ? "choose-btn-try" : "choose-btn-try2"
+                  }
+                >
                   <button>Try Now</button>
                 </div>
               </div>
@@ -1633,20 +1854,50 @@ function App() {
                 </div>
                 <div className="plan-system">
                   <ul>
-                    <li><span><Check/></span> Upload video up to 720p resolution</li>
-                    <li><span><Check/></span>  Achievment & Post Scheduling</li>
-                    <li><span><Check/></span> Set Your Rates</li>
-                    <li><span><Check/></span>  Excluscive Deals</li>
-                    <li><span><Check/></span>  Advanced Statistics</li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Upload video up to 720p resolution
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Achievment & Post Scheduling
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Set Your Rates
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Excluscive Deals
+                    </li>
+                    <li>
+                      <span>
+                        <Check />
+                      </span>{" "}
+                      Advanced Statistics
+                    </li>
                   </ul>
                 </div>
                 <div className="plan-rate">
-                  <CurrencyRupee/>123/<span>month</span>
+                  <CurrencyRupee />
+                  123/<span>month</span>
                 </div>
-                <div className={trie === false?"choose-btn":"choose-btn2"}>
+                <div className={trie === false ? "choose-btn" : "choose-btn2"}>
                   <button>Choose</button>
                 </div>
-                <div className={trie === true ?"choose-btn-try":"choose-btn-try2"}>
+                <div
+                  className={
+                    trie === true ? "choose-btn-try" : "choose-btn-try2"
+                  }
+                >
                   <button>Try Now</button>
                 </div>
               </div>
@@ -1660,15 +1911,17 @@ function App() {
           <div className="background-view">
             <div className="upper-apply"></div>
             <div className="contact-view properties text-light ">
-                 <div className="container">
-                 <div className="contact-name text-center">
+              <div className="container">
+                <div className="contact-name text-center">
                   <h2>General Enquires</h2>
-                 </div>
-                 <div className="contact-info text-center">
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat voluptas reprehenderit numquam.
+                </div>
+                <div className="contact-info text-center">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Fugiat voluptas reprehenderit numquam.
                   </p>
-                 </div>
-                 </div>
+                </div>
+              </div>
             </div>
 
             <div className="customer-details">
@@ -1676,7 +1929,7 @@ function App() {
                 <div className="detail-list">
                   <div className="name contact-display">
                     <input type="text" placeholder="Name" />
-                    <input type="text" placeholder="Email id"/>
+                    <input type="text" placeholder="Email id" />
                   </div>
                   <div className="location-select contact-display">
                     <select>
@@ -1707,7 +1960,6 @@ function App() {
             </div>
           </div>
         </div>
-
       </section>
     </>
   );
